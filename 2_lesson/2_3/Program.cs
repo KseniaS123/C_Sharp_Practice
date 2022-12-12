@@ -4,12 +4,12 @@
 string Number(int num)
 {    
     if (num % 7 == 0 && num % 23 == 0)
-        return "Yes";
+        return "Число кратно 7 и 23";
     else
     {
-        return "No";
+        return "Число некратно 7 и 23";
     }
 }
-Console.WriteLine("Enter Number");
+Console.WriteLine("Введите число");
 int num = int.Parse(Console.ReadLine());
 Console.WriteLine(Number(num));
