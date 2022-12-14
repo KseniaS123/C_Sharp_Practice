@@ -3,19 +3,23 @@
 // [3 7 22 2 78] -> 76
 
 
-double[] Array(double num)
+double[] Array(int num, int from, int to)
 {
     double[] arr = new double[num];
+
     for (int i = 0; i < num; i++)
-        arr[i] = new Random().NextDouble(100-0)+0;
+        arr[i] = Math.Round(new Random().NextDouble() * (to - from) + from, 2);
+
     return arr;
 }
 
 void PrintArray(double[] array)
 {
     int count = array.Length;
+
     for (int i = 0; i < count; i++)
         Console.Write($"{array[i]} ");
+
     Console.WriteLine();
 }
 
@@ -25,21 +29,21 @@ double DifMinMax(double[] mas)
     double max = mas[0];
     double diff = 0;
 
-    for (int i = 0; i < mas.Length; i++)
+    for (int i = 1; i < mas.Length; i++)
     {
         if (mas[i] > max)
             max = mas[i];
         if (mas[i] < min)
             min = mas[i];
     }
-    diff = max - min;
+    diff = Math.Round(max - min, 2);
     return diff;
 }
 
 Console.WriteLine("Введите количество элементов в массиве и крайние границы: ");
-double[] arr_1 = Array(double.Parse(Console.ReadLine()));
-// double.Parse(Console.ReadLine()),
-// double.Parse(Console.ReadLine()));
+double[] arr_1 = Array(int.Parse(Console.ReadLine()),
+                        int.Parse(Console.ReadLine()),
+                        int.Parse(Console.ReadLine()));
 Console.Write("Полученный массив: ");
 PrintArray(arr_1);
 Console.Write("Разница между max и min эл-ми: ");
