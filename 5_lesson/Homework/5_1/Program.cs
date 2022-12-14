@@ -23,8 +23,7 @@ void PrintArray(int[] array)
 int EvenNum(int[] mas)
 {
     int amount = 0;
-    int size = mas.Length;
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < mas.Length; i++)
     {
         if (mas[i] % 2 == 0)
             amount = amount + 1;
