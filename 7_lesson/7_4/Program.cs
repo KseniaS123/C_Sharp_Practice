@@ -1,5 +1,7 @@
-﻿// 3. Задайте двумерный массив.
-// Найдите сумму элементов главной диагонали.
+﻿// 4. Задайте двумерный массив.
+// Введите элемент, и найдите первое его вхождение,
+// выведите позиции по горизонтали и вертикали, 
+// или напишите, что такого элемента нет.
 
 int[,] Array(int row, int column, int from, int to)
 {
@@ -26,31 +28,15 @@ void Print(int[,] arr)
     Console.WriteLine();
 }
 
-// int Summ(int[,] mas)
-// {
-//     int sum = 0;
-//     int row = mas.GetLength(0);
-//     for (int i = 0; i < row; i++)
-//         sum += mas[i, i];
-
-//     return sum;
-// }
-
-int Summ(int[,] mas)
+string FindElement(int[,] mas, int findNum)
 {
-    int sum = 0;
-    int row = mas.GetLength(0);
-    int column = mas.GetLength(1);
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < column; j++)
-            if (i == j)
-            {
-                sum += mas[i, j];
-            }
-    }
-
-    return sum;
+    for (int i = 0; i < mas.GetLength(0); i++)
+        for (int j = 0; j < mas.GetLength(1); j++)
+        {
+            if (mas[i, j] == findNum)
+                return $"Искомый элемент {findNum} находится на позиции [{i + 1}, {j + 1}]";
+        }
+    return $"Искомый элемент {findNum} не найден";
 }
 
 Console.Write("Введите число строк: ");
@@ -63,4 +49,4 @@ int[,] arr_1 = Array(row, column,
                     int.Parse(Console.ReadLine()));
 Console.WriteLine();
 Print(arr_1);
-Console.WriteLine(Summ(arr_1));
+Console.WriteLine(FindElement(arr_1, int.Parse(Console.ReadLine())));
