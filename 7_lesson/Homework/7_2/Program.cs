@@ -37,21 +37,9 @@ string FindElement(int[,] mas, int a, int b)
     int row = mas.GetLength(0);
     int col = mas.GetLength(1);
 
-    if ((a < 0 && b < 0)
-        || (a > row && b > col)
-        || (a < 0 && b > col)
-        || (a > row && b < 0))
+    if (a <= 0 || b <= 0 || a > row || b > col)
         return $"Элемента на позиции {a},{b} не существует";
-    
-    return $"Искомый элемент: {mas[a,b]}";
-
-    // for (int i = 0; i < mas.GetLength(0); i++)
-    //     for (int j = 0; j < mas.GetLength(1); j++)
-    //     {
-    //         if (mas[i, j] == findNum)
-    //             return $"Искомый элемент {findNum} находится на позиции [{i + 1}, {j + 1}]";
-    //     }
-    // return $"Искомый элемент {findNum} не найден";
+    return $"Искомый элемент: {mas[a - 1, b - 1]}";
 }
 
 Console.Write("Введите число строк: ");
