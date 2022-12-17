@@ -15,21 +15,9 @@ double Extent(double a, double b)
         b = b * (-1);
     }
     for (int i = 1; i <= b; i++)
-    {
-        if (a > 0)
-        {
-            op = op * a;
-        }
-        else
-        {
-            a = a * (-1);
-            op = -(op * a);
-        }
-    }
+        op = op * a;
     if (c < 0)
-    {
         op = 1 / op;
-    }
     op = Math.Round(op, 4);
     return op;
 }
