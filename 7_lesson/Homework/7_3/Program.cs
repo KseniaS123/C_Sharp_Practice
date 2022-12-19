@@ -31,7 +31,7 @@ void Print(int[,] arr)
     Console.WriteLine();
 }
 
-int Average(int[,] mas)
+double Average(double[,] mas)
 {
     
 }
