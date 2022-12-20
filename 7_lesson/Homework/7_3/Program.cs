@@ -31,9 +31,21 @@ void Print(int[,] arr)
     Console.WriteLine();
 }
 
-double Average(double[,] mas)
+void Average(int[,] mas)
 {
-    
+    int row = mas.GetLength(0);
+    int column = mas.GetLength(1);
+
+
+    for (int j = 0; j < column; j++)
+    {
+        double avarage = 0;
+
+        for (int i = 0; i < row; i++)
+            avarage = avarage + mas[i, j];
+        Console.Write($"{Math.Round(avarage / row, 2),5} ");
+    }
+    Console.WriteLine();
 }
 
 Console.Write("Введите число строк: ");
@@ -46,5 +58,5 @@ int[,] arr_1 = Array(row, column,
                     int.Parse(Console.ReadLine()));
 Console.WriteLine();
 Print(arr_1);
-Console.WriteLine(FindElement(arr_1, int.Parse(Console.ReadLine()),
-                                    int.Parse(Console.ReadLine())));
+Average(arr_1);
+
