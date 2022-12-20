@@ -1,14 +1,13 @@
-﻿// Задайте двумерный массив.
-// Напишите программу, которая упорядочит по убыванию элементы
-// каждой строки двумерного массива.
+﻿// Задайте прямоугольный двумерный массив. 
+// Напишите программу, которая будет находить строку с наименьшей
+// суммой элементов.
 // Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-// В итоге получается вот такой массив:
-// 7 4 2 1
-// 9 5 3 2
-// 8 4 4 2
+// 5 2 6 7
+// Программа считает сумму элементов в каждой строке
+// и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
 int[,] Array(int row, int column, int from, int to)
 {
@@ -35,23 +34,33 @@ void Print(int[,] arr)
     Console.WriteLine();
 }
 
-void Sort(int[,] mas)
+void SummaMin(int[,] mas)
 {
     int row = mas.GetLength(0);
     int column = mas.GetLength(1);
+    int min = 0;
+    int index_min = 0;
 
     for (int i = 0; i < row; i++)
     {
+        int sum = 0;
+
         for (int j = 0; j < column; j++)
+            sum = sum + mas[i, j];
+        Console.Write($"{sum,4}");
+
+        if (sum > min && min == 0)
+            min = sum;
+        else if (sum < min)
         {
-            for (int a = 0; a < column - j - 1; a++)
-            {
-                if (mas[i, a + 1] > mas[i, a])
-                    (mas[i, a], mas[i, a + 1]) = (mas[i, a + 1], mas[i, a]);
-            }
+            min = sum;
+            index_min = i;
         }
     }
+    Console.WriteLine();
+    Console.WriteLine($"Минимальная сумма элементов на {index_min + 1} строке");
 }
+
 
 Console.Write("Введите число строк: ");
 int row = int.Parse(Console.ReadLine());
@@ -63,5 +72,4 @@ int[,] arr_1 = Array(row, column,
                     int.Parse(Console.ReadLine()));
 Console.WriteLine();
 Print(arr_1);
-Sort(arr_1);
-Print(arr_1);
+SummaMin(arr_1);
